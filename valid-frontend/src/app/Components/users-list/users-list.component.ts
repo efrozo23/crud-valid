@@ -18,7 +18,10 @@ export class UsersListComponent implements OnInit {
 
   selectedId: string;
   selectedRowIds: Set<number> = new Set<number>();
-
+  ids:Number[] = []
+  hidden: boolean = true
+  error: boolean = false
+  message: String = ""
 
   constructor(private userService: ServiceUsersService) { }
 
@@ -29,21 +32,10 @@ export class UsersListComponent implements OnInit {
 
   getUSers() {
     console.log('Load users')
-    this.userService.getUserList().subscribe(data => {
-      this.users = data
+    this.userService.getUserList().subscribe(r => {
+      this.users = r.data
     }, error => {
       console.log('Error load service: ', error.message)
-      this.user.id = 1
-      this.user.name = "E"
-      this.user.lastname = "R"
-      this.user.status = false
-      this.users.push(this.user)
-      this.user = new User()
-      this.user.id = 2
-      this.user.name = "F"
-      this.user.lastname = "O"
-      this.user.status = false
-      this.users.push(this.user)
     }
 
     )
@@ -59,18 +51,35 @@ export class UsersListComponent implements OnInit {
   }
 
   rowIsSelected(id: number) {
-    return this.selectedRowIds.has(id);
+    return   this.selectedRowIds.has(id);
   }
 
   getSelectedRows(){
-    return this.users.filter(x => this.selectedRowIds.has(x.id));
+    return this.users.filter(x => this.selectedRowIds.has(x.id)).map((x)=>{return x.id});
   }
 
+
   onLogClick() {
-    // console.log(this.getSelectedRows());
-    console.log(this.selectedRowIds)
-    this.userService.getUpdateUsers(this.selectedRowIds)
+    console.log(this.getSelectedRows())
+    this.userService.getUpdateUsers(this.getSelectedRows()).subscribe(r=>{
+      this.message = r.message
+      this.error = false
+      this.hidden = false
+      this.delay()
+      this.selectedRowIds.clear()
+    },e=>{
+      this.hidden = false
+      this.error = true
+      this.message = e.message
+      this.selectedRowIds.clear()
+    })
     this.users  = []
     this.getUSers()
+  }
+
+  delay() {
+    setTimeout(() => {
+      this.hidden = true
+    }, 2000);
   }
 }

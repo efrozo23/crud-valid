@@ -6,15 +6,21 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
-@Entity
+import com.fasterxml.jackson.annotation.JsonProperty;
+
+@Entity(name = "usuarios")
 public class UserModel {
 	
 	@Id
 	@Column(name = "id")
 	@GeneratedValue(strategy = GenerationType.AUTO,generator = "id_user_key")
 	private int id;
+	@Column(name = "name")
 	private String name;
+	@Column(name = "lastname")
+	@JsonProperty("lastname")
 	private String lastName;
+	@Column(name = "status")
 	private boolean status;
 	
 	
