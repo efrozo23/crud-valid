@@ -1,0 +1,25 @@
+<h2>Listado de Usuarios</h2>
+
+<button type="button" class="btn btn-primary" (click)="onLogClick()">Procesar</button>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Nombre</th>
+      <th scope="col">Apellido</th>
+      <th scope="col">Estado</th>
+      
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let item of users"  [class.selectedRow]="rowIsSelected(item.id)" (click)="onRowClick(item.id)" style="cursor: pointer;">
+      <th scope="row">{{ item.id }}</th>
+      <td>{{ item.name }}</td>
+      <td>{{ item.lastname }}</td>
+      <td>{{ item.status }}</td>
+    </tr>
+   
+  </tbody>
+</table>
+
