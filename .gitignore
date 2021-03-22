@@ -1,0 +1,80 @@
+# See http://help.github.com/ignore-files/ for more about ignoring files.
+
+# compiled output
+valid-frontend/dist
+valid-frontend/tmp
+valid-frontend/out-tsc
+
+# dependencies
+valid-frontend/node_modules
+
+# IDEs and editors
+valid-frontend/.idea
+valid-frontend/.project
+valid-frontend/.classpath
+valid-frontend/.c9/
+valid-frontend/*.launch
+valid-frontend/.settings/
+*.sublime-workspace
+
+# IDE - VSCode
+valid-frontend/.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+
+# misc
+/.sass-cache
+/connect.lock
+/coverage
+/libpeerconnection.log
+valid-frontend/npm-debug.log
+yarn-error.log
+testem.log
+/typings
+
+# System Files
+.DS_Store
+Thumbs.db
+
+
+HELP.md
+target/
+!.mvn/wrapper/maven-wrapper.jar
+!**/src/main/**/target/
+!**/src/test/**/target/
+
+### STS ###
+.apt_generated
+.classpath
+.factorypath
+.project
+.settings
+.springBeans
+.sts4-cache
+
+### IntelliJ IDEA ###
+.idea
+*.iws
+*.iml
+*.ipr
+
+### NetBeans ###
+/nbproject/private/
+/nbbuild/
+/dist/
+/nbdist/
+/.nb-gradle/
+build/
+!**/src/main/**/build/
+!**/src/test/**/build/
+
+### VS Code ###
+.vscode/
+##backend
+valid-test/target/
+valid-test/.project
+valid-test/.classpath
+valid-test/.settings
+valid-test/.mvn
