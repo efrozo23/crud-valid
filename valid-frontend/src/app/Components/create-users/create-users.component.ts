@@ -34,11 +34,12 @@ export class CreateUsersComponent implements OnInit {
     console.log(this.user)
     this.myForm.reset()
     this.userService.createUser(this.user).subscribe(r => {
+      this.error = false
       this.hidden = false
-      this.message = r
+      this.message = r.message
       this.delay()
     }, error => {
-      console.error(error.message)
+      console.error(error)
       this.hidden = false
       this.error = true
       this.message = error.message

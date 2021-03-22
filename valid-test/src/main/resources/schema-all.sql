@@ -14,6 +14,9 @@ CREATE TABLE usuarios  (
 
 CREATE SEQUENCE id_user_key;
 
+insert into usuarios (id,name,lastname) values (100,'Elkin','Rozo');
+insert into usuarios (id,name,lastname) values (200,'Fabian','O');
+
 
 
 
